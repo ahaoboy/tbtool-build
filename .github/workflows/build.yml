@@ -31,7 +31,8 @@ jobs:
           deno-version: latest
       - name: build
         run: |
-          pnpm i
+          npx i
+          npx playwright install
           deno run --allow-sys --allow-env --allow-read --allow-write --allow-run download.ts
       - name: release
         uses: ncipollo/release-action@v1
