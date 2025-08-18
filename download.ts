@@ -13,7 +13,7 @@ async function main() {
     page.click("text=立即下载")
   ]);
 
-  const savePath = path.resolve(process.cwd(), "tbtool.zip");
+  const savePath = path.resolve(process.cwd(), "tbtool.exe");
 
   await download.saveAs(savePath);
   console.log("下载完成，文件保存到:", savePath);
