@@ -1,16 +1,19 @@
 import { chromium } from "playwright";
 import path from "node:path";
+import process from "node:process";
 
 async function main() {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ acceptDownloads: true });
   const page = await context.newPage();
 
-  await page.goto("https://www.tbtool.cn/download/index.html", { timeout: 60000 });
+  await page.goto("https://www.tbtool.cn/download/index.html", {
+    timeout: 60000,
+  });
 
-  const [ download ] = await Promise.all([
+  const [download] = await Promise.all([
     page.waitForEvent("download"),
-    page.click("text=立即下载")
+    page.click("text=立即下载"),
   ]);
 
   const savePath = path.resolve(process.cwd(), "tbtool.exe");
